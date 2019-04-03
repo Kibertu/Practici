@@ -1,0 +1,28 @@
+#include "pch.h"
+#include <iostream>
+#include <string>
+using namespace std;
+void odin(){
+    string k;
+	cin >> k;
+    cout << "\nHello, "<<k << ".
+}
+void dwa(){
+    int q, w, e;
+	cin >> q >> w>> e;
+	if (e == 1) {
+		q = q + w;
+	}
+	if (e == 2) {
+		q = q - w;
+	}
+	cout << q;
+}
+
+int main()
+{
+	odin();
+    dwa();
+	system("pause");
+	return 0;
+}
