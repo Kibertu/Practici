@@ -1,0 +1,50 @@
+#include "pch.h"
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+void odin(){
+	double q, w, e, r;
+	q = 4.8;
+	w = -7.9;
+	e = pow(q - w, 1.0 / 3.0);
+	r = w * w*w + e*q*q;
+	cout << q << " " << w << " " << e << " " << r;
+}
+
+void dwa() {
+	double q, w, e, r;
+	q = -0.6;
+	w = 5.3;
+	e = 1 - 2*cos(q)*sin(w);
+	r = pow(e + q * q*w, 1 / 3);
+	cout << q << " " << w << " " << e << " " << r;
+}
+
+void tri() {
+	double q, w, e, r;
+	q = 4.6;
+	w = 1.5;
+	e = (q-w)/(q*q-q*w+w*w);
+	r = sin(e) * sin(e) + 1/(sin(q-w)/cos(q-w));
+	cout << q << " " << w << " " << e << " " << r;
+}
+
+void chitiri() {
+	double q, w, e, r;
+	q = 3.5;
+	w = -0.7;	
+	e = q + log(q+w);
+	r = (sin(q * w) / cos(q * w)) + cos(2*q*e);
+	cout << q << " " << w << " " << e << " " << r;
+}
+int main()
+{
+	int x;
+	cin >> x;
+	if (x == 1) odin();
+	if (x == 2) dwa();
+	if (x == 3) tri();
+	if (x == 4) chitiri();
+	system("pause");
+}
