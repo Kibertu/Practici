@@ -1,0 +1,223 @@
+#include "pch.h"
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+class Property{
+protected:
+    int worth;
+public:
+    Property(int q):worth(q){};
+    virtual int nalog() = 0;
+};
+
+class Apartment:public Property{
+public:
+   int nalog(){
+        return worth/1000;
+    }
+    Apartment(int w = 0):Property(w){
+    }
+};
+class Car:public Property{
+public:
+    int nalog(){
+        return worth/200;
+    }
+    Car(int w = 0):Property(w){
+    }
+};
+class CountryHouse:public Property{
+public:
+    int nalog(){
+        return worth/500;
+    }
+    CountryHouse(int w = 0):Property(w){
+    }
+};
+
+class base{
+public:
+    virtual void retur();
+    virtual int calc(int a);
+    virtual void dx();
+    virtual base* copy()=0;
+};
+
+class cons: public base {
+public:
+    void retur() {
+		cout << "x=const" << endl;
+	}
+	int calc(int a) {
+		return 1;
+	}
+	void dx() {
+		cout << "f'(x) = 0" << endl;
+	}
+	base* copy() {
+		base* f = new cons;
+		return f;
+	}
+};
+class per : public base {
+public:
+	void retur() {
+		cout << "f(x) = x" << endl;
+	}
+	int calc(int x) {
+		return x;
+	}
+	void dx() {
+		cout << "f'(x) = 1" << endl;
+	}
+	base* copy() {
+		base* f = new per;
+		return f;
+	}
+};
+class suma : public base {
+public:
+	void retur() {
+		cout << "f(x) = (x+1)^2" << endl;
+	}
+	int calc(int x) {
+		return (x+1)*(x+1);
+	}
+	void dx() {
+		cout << "f'(x) = 2*x+2" << endl;
+	}
+	base* copy() {
+		base* f = new suma;
+		return f;
+	}
+};
+class raz : public base {
+public:
+	void retur() {
+		cout << "f(x) = 2*x-x" << endl;
+	}
+	int calc(int x) {
+		return 2*x - x;
+	}
+	void dx() {
+		cout << "f'(x) = 1" << endl;
+	}
+	base* copy() {
+		base* f = new raz;
+		return f;
+	}
+};
+class umn : public base {
+public:
+	void retur() {
+		cout << "f(x) = (x+1)^2" << endl;
+	}
+	int calc(int x) {
+		return (x+1)*(x+1);
+	}
+	void dx() {
+		cout << "f'(x) = 2*x+2" << endl;
+	}
+	base* copy() {
+		base* f = new umn;
+		return f;
+	}
+};
+class del : public base {
+public:
+	void retur() {
+		cout << "f(x) =4x^2/x^3" << endl;
+	}
+	int calc(int x) {
+		return (4 * x * x) / (x * x *x);
+	}
+	void dx() {
+		cout << "f'(x) = 4/x^2" << endl;
+	}
+	base* copy() {
+		base* f = new del;
+		return f;
+	}
+};
+class si : public base {
+public:
+	void return_Fun() {
+		cout << "f(x) =sin(x)" << endl;
+	}
+	int res(int x) {
+		return sin(x);
+	}
+	void dx() {
+		cout << "f'(x) = cos(x)" << endl;
+	}
+	base* copy() {
+		base* f = new si;
+		return f;
+	}
+};
+class co : public base {
+public:
+	void return_Fun() {
+		cout << "f(x) =cos(x)" << endl;
+	}
+	int calc(int x) {
+		return cos(x);
+	}
+	void dx() {
+		cout << "f'(x) = -sin(x)" << endl;
+	}
+	base* copy() {
+		base* f = new co;
+		return f;
+	}
+};
+class ex : public base {
+public:
+	void return_Fun() {
+		cout << "f(x) =exp(x)" << endl;
+	}
+	int calc(int x) {
+		return exp(x);
+	}
+	void dx() {
+		cout << "f'(x) = exp(x)" << endl;
+	}
+	base* copy() {
+		base* f = new ex;
+		return f;
+	}
+};
+class ln : public base {
+public:
+	void return_Fun() {
+		cout << "f(x) =Ln(x)" << endl;
+	}
+	int calc(int x) {
+		return log(x);
+	}
+	void dx() {
+		cout << "f'(x) = 1/x" << endl;
+	}
+	base* copy() {
+		base* f = new ln;
+		return f;
+	}
+};
+
+
+int main(int argc, const char * argv[]) {
+ Property* arr[7];
+ arr[0] = new Apartment(1000000);
+ arr[1] = new Apartment(1100000);
+ arr[2] = new Apartment(1200000);
+ arr[3] = new Car(1000000);
+ arr[4] = new Car(1100000);
+ arr[5] = new CountryHouse(1000000);
+ arr[6] = new CountryHouse(1100000);
+    for (int i = 0;i < 7;i++){
+ cout <<"Налог:" <<arr[i]->nalog() << "\n";
+    }
+    
+    return 0;
+}
