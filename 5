@@ -1,0 +1,155 @@
+#include "pch.h"
+#include <iostream>
+using namespace std;
+
+void bubel(int* array, int e) {
+	int p = 1;
+	while (p != 0) {
+		p = 0;
+		for (int i = 0; i < e-1; i++) {
+			if (array[i + 1] < array[i]) {
+				swap(array[i], array[i + 1]);
+				p++;
+			}
+		}
+	}
+	cout << "bubel(int): ";
+	for (int i = 0; i < e; i++)
+		cout << "q[" << i << "]=" << array[i] << " ";
+}
+void bubel(double* array, int e) {
+	int p=1;
+	while (p != 0) {
+		p = 0;
+		for (int i = 0; i <e-1; i++) {
+			if (array[i + 1] < array[i]) {
+				swap(array[i], array[i + 1]);
+				p++;
+			}
+		}
+	}
+	cout << "\nbubel(double): ";
+	for (int i = 0; i < e; i++)
+		cout <<"w["<<i<<"]="<< array[i] <<" ";
+}
+
+void vibor(int* array, int e) {
+	int min;
+	for (int i = 0; i < e; i++){
+		min = i;
+		for (int j = i + 1; j < e; j++) {
+			if (array[j] < array[min])  min = j; 
+		}
+		swap(array[i], array[min]);
+	}
+	cout << "vibor(int): ";
+	for (int i = 0; i < e; i++)
+		cout << "q[" << i << "]=" << array[i] << " ";
+}
+void vibor(double* array, int e) {
+	int min;
+	for (int i = 0; i < e-1; i++) {
+		min = i;
+		for (int j = i + 1; j < e; j++) {
+			if (array[j] < array[min])  min = j; 
+		}
+		swap(array[i], array[min]);
+	}
+	cout << "\nvibor(double): ";
+	for (int i = 0; i < e; i++)
+		cout <<"w["<<i<<"]="<< array[i] <<" ";
+}
+
+void vstav(int* array, int e) {
+	int j, k;
+	for (int i = 1; i < e; i++) {
+		j = i - 1;
+		k = i;
+		while (array[k] < array[j] && j >= 0 && k>0) {
+			swap(array[k],array[j]);
+			j--;
+			k--;
+			if (j == -1)break;
+		}
+	}
+	cout << "vstav(int):";
+	for (int i = 0; i < e; i++)
+		cout << "q[" << i << "]=" << array[i] << " ";
+}
+void vstav(double* array, int e){
+	int j, k;
+	for (int i = 1; i < e; i++) {
+		j = i - 1;
+		k = i;
+		while (array[k] < array[j] && j >= 0 && k>0) {
+			swap(array[k], array[j]);
+			j--;
+			k--;
+			if (j == -1)break;
+		}
+	}
+	cout << "\nvstav(double): ";
+	for (int i = 0; i < e; i++)
+		cout <<"w["<<i<<"]="<< array[i] <<" ";
+}
+
+int sum(int q, int w) {
+	return q + w;
+}
+int umn(int q, int w) {
+	return q * w;
+}
+int min(int q, int w) {
+	return q - w;
+}
+int del(int q, int w) {
+	return q / w;
+	}
+double sum(double q, double w) {
+	return q + w;
+}
+double umn(double q, double w) {
+	return q * w;
+}
+double min(double q, double w) {
+	return q - w;
+}
+double del(double q, double w) {
+	return q / w;
+}
+
+void calcul(){
+    int e,r,t;
+    cout << "Введите два чила.\n";
+    cin>> e>>r;
+    cout << "Какую операцию хотите совершить? 1)Сложение. 2) Вычитание. 3)Умнажение. 4) Деление.\n";
+    cin >> t;
+    if (t==1)cout<<sum(e,r);
+    if (t==2)cout<<min(e,r);
+    if (t==3)cout<<umn(e,r);
+    if (t==4)cout<<del(e,r);
+}
+
+int main() {
+	int e = 10,a;
+	int q[10] = { 10,9,8,7,6,5,4,3,2,1};
+	double w[10] = { 10.1, 9.2, 8.3, 7.4, 6.5, 5.6, 4.7, 3.8, 2.9,1.01};
+	cout << "Какой вариант?\n";
+	cin >> a;
+	if (a==1){
+	bubel(q, e);
+	bubel(w, e);
+	};
+	if (a==2){
+	    vibor(q,e);
+	    vibor(w,e);
+	};
+	if (a==3){
+	    vstav(q,e);
+	    vstav(w,e);
+	};
+	if (a==4){
+	    calcul();
+	};
+	return 0;
+}
